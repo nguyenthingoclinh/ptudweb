@@ -1,0 +1,41 @@
+﻿@using PCSHOP.Models;
+@using PCSHOP.Utilities;
+@model IList<Post>
+
+<!-- section -->
+<div class="section padding_layout_1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="full">
+                    <div class="main_heading text_align_left">
+                        <h2>Latest from Our Blog</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                string url = Functions.TitleSlugGeneration("post", item.Title, item.ID);
+                <div class="col-md-4">
+                    <div class="full blog_colum">
+                        <div class="blog_feature_img"> <img src="@item.Images" alt="#" /> </div>
+                        <div class="post_time">
+                            <p><i class="fa fa-clock-o"></i> @item.CreatedDate.ToString("dd-MM-yyyy")</p>
+                        </div>
+                        <div class="blog_feature_head">
+                            <h4>@item.Title</h4>
+                        </div>
+                        <div class="blog_feature_cont">
+                            <p>@item.Abstract</p>
+                        </div>
+                    </div>
+                </div>
+                
+            }
+            
+        </div>
+    </div>
+</div>
+<!-- end section -->
